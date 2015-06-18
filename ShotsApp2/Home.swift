@@ -68,6 +68,12 @@ class Home: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        //This changes the UI Status Bar to be white.
+        return UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {
