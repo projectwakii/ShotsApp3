@@ -21,6 +21,7 @@ class Home: UIViewController {
         
         //By using popoverView.hidden = !popoverView.hidden, we flip the bool value to the opposite of what it already is (e.g. true --> false)
         // popoverView.hidden = !popoverView.hidden
+        
     }
     
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -50,8 +51,7 @@ class Home: UIViewController {
     @IBAction func shareButtonDidPress(sender: AnyObject) {
         print("Share button pressed.")
         shareView.hidden = false
-        
-        
+        insertBlurView(backgroundMaskView, style: UIBlurEffectStyle.Dark)
     }
     
     

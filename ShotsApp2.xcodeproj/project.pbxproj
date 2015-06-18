@@ -17,6 +17,9 @@
 		D7AFCB811B304D08006B328B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB801B304D08006B328B /* DetailViewController.swift */; };
 		D7BFF1CE1B319FEE00C6F3B7 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BFF1CD1B319FEE00C6F3B7 /* Home.swift */; };
 		D7C57AAF1B32AC3200B504C1 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C57AAE1B32AC3200B504C1 /* BlurView.swift */; };
+		D7C57AB01B32AD3800B504C1 /* ShotsApp2.app in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB461B303461006B328B /* ShotsApp2.app */; };
+		D7C57AB11B32AD3800B504C1 /* ShotsApp2Tests.xctest in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB5D1B303462006B328B /* ShotsApp2Tests.xctest */; };
+		D7C57AB21B32AD3800B504C1 /* ShotsApp2UITests.xctest in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB681B303462006B328B /* ShotsApp2UITests.xctest */; };
 		D7E74A461B32AACE006FA3A0 /* Spring in Resources */ = {isa = PBXBuildFile; fileRef = D7E74A451B32AACE006FA3A0 /* Spring */; };
 /* End PBXBuildFile section */
 
@@ -270,6 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C57AB01B32AD3800B504C1 /* ShotsApp2.app in Sources */,
+				D7C57AB11B32AD3800B504C1 /* ShotsApp2Tests.xctest in Sources */,
+				D7C57AB21B32AD3800B504C1 /* ShotsApp2UITests.xctest in Sources */,
 				D7AFCB521B303461006B328B /* ShotsApp2.xcdatamodeld in Sources */,
 				D7BFF1CE1B319FEE00C6F3B7 /* Home.swift in Sources */,
 				D7C57AAF1B32AC3200B504C1 /* BlurView.swift in Sources */,
