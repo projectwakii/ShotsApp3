@@ -51,7 +51,15 @@ class Home: UIViewController {
     @IBAction func shareButtonDidPress(sender: AnyObject) {
         print("Share button pressed.")
         shareView.hidden = false
+        
+        //Makes backgroundMaskView blur the background.
         insertBlurView(backgroundMaskView, style: UIBlurEffectStyle.Dark)
+        
+        self.shareView.alpha = 0
+        //Memorize this. 
+        UIView.animateWithDuration(0.5, animations: {
+            self.shareView.alpha = 1
+        })
     }
     
     
