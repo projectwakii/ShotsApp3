@@ -50,6 +50,8 @@ class Home: UIViewController {
     @IBAction func shareButtonDidPress(sender: AnyObject) {
         print("Share button pressed.")
         shareView.hidden = false
+        
+        
     }
     
     

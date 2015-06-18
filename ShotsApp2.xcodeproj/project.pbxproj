@@ -16,6 +16,7 @@
 		D7AFCB7F1B30359F006B328B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AFCB7E1B30359F006B328B /* Main.storyboard */; };
 		D7AFCB811B304D08006B328B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB801B304D08006B328B /* DetailViewController.swift */; };
 		D7BFF1CE1B319FEE00C6F3B7 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BFF1CD1B319FEE00C6F3B7 /* Home.swift */; };
+		D7C57AAF1B32AC3200B504C1 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C57AAE1B32AC3200B504C1 /* BlurView.swift */; };
 		D7E74A461B32AACE006FA3A0 /* Spring in Resources */ = {isa = PBXBuildFile; fileRef = D7E74A451B32AACE006FA3A0 /* Spring */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		D7AFCB7E1B30359F006B328B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D7AFCB801B304D08006B328B /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D7BFF1CD1B319FEE00C6F3B7 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		D7C57AAE1B32AC3200B504C1 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = Spring/BlurView.swift; sourceTree = "<group>"; };
 		D7E74A451B32AACE006FA3A0 /* Spring */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Spring; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 		D7AFCB481B303461006B328B /* ShotsApp2 */ = {
 			isa = PBXGroup;
 			children = (
+				D7C57AAE1B32AC3200B504C1 /* BlurView.swift */,
 				D7E74A451B32AACE006FA3A0 /* Spring */,
 				D7AFCB7D1B30353C006B328B /* TipoType - Libertad.otf */,
 				D7AFCB491B303461006B328B /* AppDelegate.swift */,
@@ -269,6 +272,7 @@
 			files = (
 				D7AFCB521B303461006B328B /* ShotsApp2.xcdatamodeld in Sources */,
 				D7BFF1CE1B319FEE00C6F3B7 /* Home.swift in Sources */,
+				D7C57AAF1B32AC3200B504C1 /* BlurView.swift in Sources */,
 				D7AFCB4A1B303461006B328B /* AppDelegate.swift in Sources */,
 				D7AFCB811B304D08006B328B /* DetailViewController.swift in Sources */,
 			);
