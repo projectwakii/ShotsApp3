@@ -261,6 +261,9 @@
                                 <rect key="frame" x="16" y="14" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="backbutton"/>
+                                <connections>
+                                    <segue destination="d1t-1G-x6a" kind="modal" identifier="detailToHome" animates="NO" id="fqB-GR-sbc"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" id="iSB-7q-1Sp">
                                 <rect key="frame" x="21" y="269" width="30" height="30"/>
