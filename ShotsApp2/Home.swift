@@ -34,6 +34,23 @@ class Home: UIViewController {
     @IBOutlet weak var imageButton: UIButton!
     @IBAction func imageButtonDidPress(sender: AnyObject) {
         print("Image button pressed.")
+        UIView.animateWithDuration(0.5, animations: {
+            
+            //1. dialogView.frame expects a CGRect.
+            //We're getting the detailView to fill the entire screen (320x568).
+            self.dialogView.frame = CGRectMake(0, 0, 320, 568)
+            
+            //2. DialogView fills the entire screen, but we need to make the Like and Share buttons disappear, as well as the UserButton. 
+            self.likeButton.hidden = true
+            self.shareButton.hidden = true
+            self.userButton.hidden = true
+           // "self.headerView.hidden = true" is sufficient, but here we'll use the alpha instead, so that it doesn't disappear instantly but instead is animated gradually until it disappears.
+            self.headerView.alpha = 0
+            
+            //3. We need to expand the original image to fill the screen. Simultaneously, we'll get rid of the round corners.
+            self.imageButton.frame = CGRectMake(0, 0, 320, 240)
+            self.imageButton.layer.cornerRadius = 0
+        })
     }
     
     @IBOutlet weak var headerView: UIView!
