@@ -107,13 +107,23 @@ class Home: UIViewController {
         //Set initial translation.
         self.shareView.transform = CGAffineTransformMakeTranslation(0, 200)
         
+        /* VERSION 1 - TRANSLATING ONLY, WITHOUT SPRINGINESS
         UIView.animateWithDuration(0.5, animations: {
             self.shareView.alpha = 1
-            
             //Animate it so that it slides upwards (translate). This is where it ends up.
             self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
             
         })
+        */
+        
+        
+        //VERSION 2 - ADDING SPRINGINESS TO THE NEWLY APPEARED SHAREVIEW
+        UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.AllowAnimatedContent, animations: {
+                self.shareView.alpha = 1
+                //Animate it so that it slides upwards (translate). This is where it ends up.
+                self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
+            }, completion: nil)
+        
     }
     
     
