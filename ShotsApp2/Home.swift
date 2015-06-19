@@ -46,31 +46,31 @@ class Home: UIViewController {
         let scale = CGAffineTransformMakeScale(0.3, 0.3)
         let translate = CGAffineTransformMakeTranslation(200, -200)
         self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+        self.popoverView.alpha = 0
         spring(0.5, animations: {
             //2. Animate it on press.
                 let scale = CGAffineTransformMakeScale(1, 1)
                 let translate = CGAffineTransformMakeTranslation(0, 0)
                 self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+                self.popoverView.alpha = 1
             })
             //3. Make mask button visible. 
-            self.maskButton.hidden = false
+            showMask()
     }
     func hidePopover() {
         spring(0.5, animations: {
-            let scale = CGAffineTransformMakeScale(0, 0)
-            let translate = CGAffineTransformMakeTranslation(200, -200)
-            self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+            self.popoverView.hidden = true
         })
-        self.popoverView.hidden = true
-        hideMask()
     }
     
     func showMask() {
+        self.maskButton.hidden = false
+        self.maskButton.alpha = 0
         spring(0.5, animations: {
             self.maskButton.alpha = 1
         })
-        self.maskButton.hidden = false
     }
+    
     func hideMask() {
         spring(0.5, animations: {
             self.maskButton.alpha = 0
@@ -96,7 +96,8 @@ class Home: UIViewController {
         }
         */
         
-        
+        /*
+        //VERSION 1 - STANDARD WAY
             UIView.animateWithDuration(0.5, animations: {
                 
                 //1. dialogView.frame expects a CGRect.
@@ -120,6 +121,30 @@ class Home: UIViewController {
                     finished in self.performSegueWithIdentifier("homeToDetail", sender: self)
                     
             })
+        */
+        
+        //VERSION 2 - USING MENG TO'S SPRING
+        //Since we need to transition into the detail screen, we need a completion (as per above). 
+        
+        springWithCompletion(0.5, animations: {
+            //1. dialogView.frame expects a CGRect.
+            //We're getting the detailView to fill the entire screen (320x568).
+            self.dialogView.frame = CGRectMake(0, 0, 320, 568)
+            
+            //2. DialogView fills the entire screen, but we need to make the Like and Share buttons disappear, as well as the UserButton.
+            self.likeButton.hidden = true
+            self.shareButton.hidden = true
+            self.userButton.hidden = true
+            // "self.headerView.hidden = true" is sufficient, but here we'll use the alpha instead, so that it doesn't disappear instantly but instead is animated gradually until it disappears.
+            self.headerView.alpha = 0
+            
+            //3. We need to expand the original image to fill the screen. Simultaneously, we'll get rid of the round corners.
+            self.imageButton.frame = CGRectMake(0, 0, 320, 250)
+            self.imageButton.layer.cornerRadius = 0
+            
+            }, completion: {
+                finished in self.performSegueWithIdentifier("homeToDetail", sender: self)
+        })
     }
     
     @IBOutlet weak var headerView: UIView!
@@ -220,10 +245,9 @@ class Home: UIViewController {
     
     func hideShareView() {
         spring(0.5, animations: {
-            self.shareView.transform = CGAffineTransformMakeTranslation(0, 200)
+            self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
             self.dialogView.transform = CGAffineTransformMakeScale(1, 1)
             self.shareView.hidden = true
-            self.maskButton.hidden = true
         })
     }
     
@@ -275,6 +299,9 @@ class Home: UIViewController {
     
     @IBOutlet weak var maskButton: UIButton!
     @IBAction func maskButtonDidPress(sender: AnyObject) {
+        spring(0.5, animations: {
+            self.maskButton.alpha = 0
+        })
         hideShareView()
         hidePopover()
     }
