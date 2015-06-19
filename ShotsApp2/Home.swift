@@ -117,13 +117,25 @@ class Home: UIViewController {
         */
         
         
-        //VERSION 2 - ADDING SPRINGINESS TO THE NEWLY APPEARED SHAREVIEW
+        /* VERSION 2 - ADDING SPRINGINESS TO THE NEWLY APPEARED SHAREVIEW
+        //NB: I would have liked to set options to nil, but it came up with an error, so I just replaced it with something else: UIViewAnimationOptions.AllowAnimatedContent.
+        
         UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: UIViewAnimationOptions.AllowAnimatedContent, animations: {
                 self.shareView.alpha = 1
                 //Animate it so that it slides upwards (translate). This is where it ends up.
                 self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
             }, completion: nil)
+        */
         
+        // VERSION 3 - THE EXACT SAME AS ABOVE, BUT USING MENG TO'S SPRING
+        //NB: remember that you have to import Spring into the application. For some weird reason, you have to put the SpringAnimation class containing the public function into the top level of the folder hierarchy; keeping it inside the Spring folder leaves it inaccessible for some reason.
+        //NB: I've had to modify the function to add the .AllowAnimatedContent bit. See Version 2. 
+        
+        spring(0.5, animations: {
+            self.shareView.alpha = 1
+            //Animate it so that it slides upwards (translate). This is where it ends up.
+            self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
+        })
     }
     
     
