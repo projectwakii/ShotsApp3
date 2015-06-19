@@ -22,6 +22,7 @@ class Home: UIViewController {
         //By using popoverView.hidden = !popoverView.hidden, we flip the bool value to the opposite of what it already is (e.g. true --> false)
         // popoverView.hidden = !popoverView.hidden
         
+        /*
         //~~~~~~~TRANSFORM~~~~~~~~
         //1. Set initial settings for popoverView.
         
@@ -37,8 +38,47 @@ class Home: UIViewController {
                 
                 self.popoverView.transform = CGAffineTransformConcat(scale, translate)
         })
+        */
         
+        //~~~~TRANSFORM USING SPRING~~~~~ 
+        //Same as above, but with Spring. 
+        //1. Set initial settings for popoverView.
+        let scale = CGAffineTransformMakeScale(0.3, 0.3)
+        let translate = CGAffineTransformMakeTranslation(200, -200)
+        self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+        spring(0.5, animations: {
+            //2. Animate it on press.
+                let scale = CGAffineTransformMakeScale(1, 1)
+                let translate = CGAffineTransformMakeTranslation(0, 0)
+                self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+            })
+            //3. Make mask button visible. 
+            self.maskButton.hidden = false
     }
+    func hidePopover() {
+        spring(0.5, animations: {
+            let scale = CGAffineTransformMakeScale(0, 0)
+            let translate = CGAffineTransformMakeTranslation(200, -200)
+            self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+        })
+        self.popoverView.hidden = true
+        hideMask()
+    }
+    
+    func showMask() {
+        spring(0.5, animations: {
+            self.maskButton.alpha = 1
+        })
+        self.maskButton.hidden = false
+    }
+    func hideMask() {
+        spring(0.5, animations: {
+            self.maskButton.alpha = 0
+        })
+        self.maskButton.hidden = true
+
+    }
+    
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     
@@ -94,6 +134,16 @@ class Home: UIViewController {
     }
     
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var twitterButton: UIButton!
+    @IBOutlet weak var shareLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var twitterLabel: UILabel!
+    @IBOutlet weak var facebookLabel: UILabel!
+    
+    //grouping together the share labels into one view
+    @IBOutlet weak var shareLabelsView: UIView!
+    @IBOutlet weak var facebookButton: UIButton!
     @IBAction func shareButtonDidPress(sender: AnyObject) {
         print("Share button pressed.")
         shareView.hidden = false
@@ -103,9 +153,14 @@ class Home: UIViewController {
         
         //Invisible initially.
         self.shareView.alpha = 0
+        self.shareLabelsView.alpha = 0
         
-        //Set initial translation.
+        //Set initial translations for shareView, including email and twitter and facebook buttons.
         self.shareView.transform = CGAffineTransformMakeTranslation(0, 200)
+        self.emailButton.transform = CGAffineTransformMakeTranslation(0, 200)
+        self.twitterButton.transform = CGAffineTransformMakeTranslation(0, 200)
+        self.facebookButton.transform = CGAffineTransformMakeTranslation(0, 200)
+
         
         /* VERSION 1 - TRANSLATING ONLY, WITHOUT SPRINGINESS
         UIView.animateWithDuration(0.5, animations: {
@@ -131,13 +186,46 @@ class Home: UIViewController {
         //NB: remember that you have to import Spring into the application. For some weird reason, you have to put the SpringAnimation class containing the public function into the top level of the folder hierarchy; keeping it inside the Spring folder leaves it inaccessible for some reason.
         //NB: I've had to modify the function to add the .AllowAnimatedContent bit. See Version 2. 
         
+        //Makes maskButton appear. The reason for doing this is so that you can have a space to "click out of". See maskButtonDidPress.
+        maskButton.hidden = false
+
         spring(0.5, animations: {
             self.shareView.alpha = 1
             //Animate it so that it slides upwards (translate). This is where it ends up.
             self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
+            
+            //Shrinks the dialog view.
+            self.dialogView.transform = CGAffineTransformMakeScale(0.8, 0.8)
+            
         })
+        
+        //SpringWithDelay waits a bit. 
+        //This code springs up the email, twitter, and Facebook buttons. It will bring them up one by one.
+        springWithDelay(0.5, delay: 0.05, animations: {
+            self.emailButton.transform = CGAffineTransformMakeTranslation(0, 0)
+        })
+        springWithDelay(0.5, delay: 0.10, animations: {
+            self.twitterButton.transform = CGAffineTransformMakeTranslation(0, 0)
+        })
+        springWithDelay(0.5, delay: 0.15, animations: {
+            self.facebookButton.transform = CGAffineTransformMakeTranslation(0, 0)
+        })
+        
+        //Finally, we want the labels to also appear with a fade-in animation.
+        UIView.animateWithDuration(0.5, delay: 0.15, options: UIViewAnimationOptions.AllowAnimatedContent, animations: {
+            self.shareLabelsView.alpha = 1
+            }, completion: nil)
+
     }
     
+    func hideShareView() {
+        spring(0.5, animations: {
+            self.shareView.transform = CGAffineTransformMakeTranslation(0, 200)
+            self.dialogView.transform = CGAffineTransformMakeScale(1, 1)
+            self.shareView.hidden = true
+            self.maskButton.hidden = true
+        })
+    }
     
     
     
@@ -184,6 +272,13 @@ class Home: UIViewController {
         
         
     }
+    
+    @IBOutlet weak var maskButton: UIButton!
+    @IBAction func maskButtonDidPress(sender: AnyObject) {
+        hideShareView()
+        hidePopover()
+    }
+    
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         //This changes the UI Status Bar to be white.

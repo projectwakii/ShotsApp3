@@ -128,6 +128,14 @@
                                             <action selector="userButtonDidPress:" destination="d1t-1G-x6a" eventType="touchUpInside" id="mqR-9c-spZ"/>
                                         </connections>
                                     </button>
+                                    <button hidden="YES" opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NJA-wr-o8i">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="maskButtonDidPress:" destination="d1t-1G-x6a" eventType="touchUpInside" id="Mit-oC-Yp5"/>
+                                        </connections>
+                                    </button>
                                     <view hidden="YES" contentMode="scaleToFill" id="fvG-Sw-SMS">
                                         <rect key="frame" x="127" y="88" width="170" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -171,27 +179,41 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdS-F4-nol">
-                                                <rect key="frame" x="131" y="22" width="58" height="31"/>
+                                            <view contentMode="scaleToFill" id="Gfb-v5-tZO">
+                                                <rect key="frame" x="18" y="2" width="310" height="199"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qXx-I3-Iix">
-                                                <rect key="frame" x="127" y="150" width="67" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0jc-5M-srz">
-                                                <rect key="frame" x="209" y="150" width="99" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fdS-F4-nol">
+                                                        <rect key="frame" x="113" y="20" width="58" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qXx-I3-Iix">
+                                                        <rect key="frame" x="109" y="148" width="67" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0jc-5M-srz">
+                                                        <rect key="frame" x="191" y="148" width="99" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FLm-rJ-ptF">
+                                                        <rect key="frame" x="20" y="148" width="56" height="31"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tX0-dc-d46">
                                                 <rect key="frame" x="21" y="76" width="90" height="90"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -207,13 +229,6 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" backgroundImage="share-facebook"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FLm-rJ-ptF">
-                                                <rect key="frame" x="38" y="150" width="56" height="31"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -229,14 +244,23 @@
                         <outlet property="backgroundImageView" destination="6Jp-hU-xAI" id="oIk-w2-fX9"/>
                         <outlet property="backgroundMaskView" destination="FJo-2J-JVS" id="gRT-oQ-CLn"/>
                         <outlet property="dialogView" destination="3AW-r4-vcx" id="Gyx-Wj-vQB"/>
+                        <outlet property="emailButton" destination="tX0-dc-d46" id="TxP-nX-nwT"/>
+                        <outlet property="emailLabel" destination="FLm-rJ-ptF" id="BkM-Ei-iVM"/>
+                        <outlet property="facebookButton" destination="RdH-o0-8bp" id="TIS-sT-65s"/>
+                        <outlet property="facebookLabel" destination="0jc-5M-srz" id="aeX-uf-8HG"/>
                         <outlet property="favoritesLabel" destination="AuH-5S-ZYX" id="kRI-M6-V8d"/>
                         <outlet property="headerView" destination="xbg-V9-6A3" id="CR6-kw-gmN"/>
                         <outlet property="imageButton" destination="wn3-Qn-otV" id="Hsa-rN-f4N"/>
                         <outlet property="likeButton" destination="Wcs-FD-3A7" id="WEb-Za-v4G"/>
+                        <outlet property="maskButton" destination="NJA-wr-o8i" id="CgM-Ys-9td"/>
                         <outlet property="popoverView" destination="fvG-Sw-SMS" id="0J0-4x-zLE"/>
                         <outlet property="shareButton" destination="VJ6-pu-BbU" id="2oN-g5-XOe"/>
+                        <outlet property="shareLabel" destination="fdS-F4-nol" id="Usm-j0-6lq"/>
+                        <outlet property="shareLabelsView" destination="Gfb-v5-tZO" id="8hB-BN-scb"/>
                         <outlet property="shareView" destination="qRl-Vx-CrA" id="ucp-PO-YBC"/>
                         <outlet property="titleLabel" destination="MHW-63-shJ" id="g2D-dW-KHu"/>
+                        <outlet property="twitterButton" destination="xQW-o2-WCf" id="hOb-CV-bB5"/>
+                        <outlet property="twitterLabel" destination="qXx-I3-Iix" id="lp0-E3-4sg"/>
                         <outlet property="userButton" destination="gFZ-l1-9sy" id="AqA-Dk-6aP"/>
                         <segue destination="XYj-yY-DMP" kind="modal" identifier="homeToDetail" animates="NO" id="vo7-FJ-egU"/>
                     </connections>
