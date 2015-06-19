@@ -22,6 +22,22 @@ class Home: UIViewController {
         //By using popoverView.hidden = !popoverView.hidden, we flip the bool value to the opposite of what it already is (e.g. true --> false)
         // popoverView.hidden = !popoverView.hidden
         
+        //~~~~~~~TRANSFORM~~~~~~~~
+        //1. Set initial settings for popoverView.
+        
+            let scale = CGAffineTransformMakeScale(0.3, 0.3)
+            let translate = CGAffineTransformMakeTranslation(200, -200)
+            
+            self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+        
+        //2. Animate it on press.
+        UIView.animateWithDuration(0.5, animations: {
+                let scale = CGAffineTransformMakeScale(1, 1)
+                let translate = CGAffineTransformMakeTranslation(0, 0)
+                
+                self.popoverView.transform = CGAffineTransformConcat(scale, translate)
+        })
+        
     }
     
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -85,10 +101,18 @@ class Home: UIViewController {
         //Makes backgroundMaskView blur the background.
         insertBlurView(backgroundMaskView, style: UIBlurEffectStyle.Dark)
         
+        //Invisible initially.
         self.shareView.alpha = 0
-        //Memorize this. 
+        
+        //Set initial translation.
+        self.shareView.transform = CGAffineTransformMakeTranslation(0, 200)
+        
         UIView.animateWithDuration(0.5, animations: {
             self.shareView.alpha = 1
+            
+            //Animate it so that it slides upwards (translate). This is where it ends up.
+            self.shareView.transform = CGAffineTransformMakeTranslation(0, 0)
+            
         })
     }
     
@@ -106,6 +130,36 @@ class Home: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //~~PLAYING WITH TRANSFORMS~~
+        
+        /*
+        //VERSION 1
+        //1. dialogView starts with a scale of 0.5. From 0.5, it is animated to its full size (1) in 0.4 seconds.
+        dialogView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        UIView.animateWithDuration(0.4, animations: {
+            self.dialogView.transform = CGAffineTransformMakeScale(1, 1)
+        })
+        */
+        
+        //VERSION 2
+        //2. This time, we'll make some variables so that we can apply multiple transforms at once. 
+        let scale = CGAffineTransformMakeScale(0.5, 0.5)
+        let translate = CGAffineTransformMakeTranslation(0, -200)
+        self.dialogView.transform = CGAffineTransformConcat(scale, translate)
+        
+        //3. Then, set the position that it will animate to.
+        UIView.animateWithDuration(0.5, animations: {
+            let scale = CGAffineTransformMakeScale(1, 1)
+            let translate = CGAffineTransformMakeTranslation(0, 0)
+            self.dialogView.transform = CGAffineTransformConcat(scale, translate)
+        })
+        
+        //We'll do the same for the popover view in userButtonDidPress.
+        
+  
+        
+        
         
     }
     
