@@ -119,6 +119,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="B9M-ID-aPj" appends="YES" id="Rzx-60-hta"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gFZ-l1-9sy">
                                         <rect key="frame" x="248" y="40" width="40" height="40"/>
@@ -234,6 +237,10 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="B9M-ID-aPj" appends="YES" id="ZEQ-zQ-GTN"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -253,6 +260,7 @@
                         <outlet property="imageButton" destination="wn3-Qn-otV" id="Hsa-rN-f4N"/>
                         <outlet property="likeButton" destination="Wcs-FD-3A7" id="WEb-Za-v4G"/>
                         <outlet property="maskButton" destination="NJA-wr-o8i" id="CgM-Ys-9td"/>
+                        <outlet property="panRecognizer" destination="B9M-ID-aPj" id="nLl-51-ACk"/>
                         <outlet property="popoverView" destination="fvG-Sw-SMS" id="0J0-4x-zLE"/>
                         <outlet property="shareButton" destination="VJ6-pu-BbU" id="2oN-g5-XOe"/>
                         <outlet property="shareLabel" destination="fdS-F4-nol" id="Usm-j0-6lq"/>
@@ -266,6 +274,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXR-ld-Vys" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="B9M-ID-aPj">
+                    <connections>
+                        <action selector="handleGesture:" destination="d1t-1G-x6a" id="5Ph-MO-a9X"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-256" y="694"/>
         </scene>

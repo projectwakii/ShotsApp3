@@ -292,7 +292,8 @@ class Home: UIViewController {
         //We'll do the same for the popover view in userButtonDidPress.
         
   
-        
+        //~~ for UI dynamics ~~
+        animator = UIDynamicAnimator(referenceView: view)
         
         
     }
@@ -304,6 +305,81 @@ class Home: UIViewController {
         })
         hideShareView()
         hidePopover()
+    }
+    
+    //~~~~GESTURES~~~~~
+    //For UIKit dynamics, must initialize these four things (see ViewDidLoad: it initializes "animator = UIDynamicAnimator(referenceView: view)"
+    //attachmentBehavior allows it to pan around freely
+    //gravityBehavior makes dialogView fall
+    //snapBehavior makes it bounce back to its original position
+    var animator : UIDynamicAnimator!
+    var attachmentBehavior : UIAttachmentBehavior!
+    var gravityBehavior : UIGravityBehavior!
+    var snapBehavior : UISnapBehavior!
+    
+    @IBOutlet var panRecognizer: UIPanGestureRecognizer!
+    @IBAction func handleGesture(sender: AnyObject) {
+        //First, we create the variable 'location', which is equivalent to wherever we tap on the canvas of the iphone (titled 'view').
+        //boxLocation is where we click on the box.
+        let location = sender.locationInView(view)
+        let boxLocation = sender.locationInView(dialogView)
+        let myView = dialogView
+        
+        //By adding this next bit, it means that the center of dialogView will just be wherever we drag it around to.
+        //dialogView.center = location
+        
+        
+        
+        //Let's make it do things for each state. 
+        if sender.state == UIGestureRecognizerState.Began {
+            if snapBehavior != nil {
+            animator.removeBehavior(snapBehavior)
+            }
+            
+            let centerOffset = UIOffsetMake(boxLocation.x - CGRectGetMidX(myView.bounds), boxLocation.y - CGRectGetMidY(myView.bounds))
+            attachmentBehavior = UIAttachmentBehavior(item: myView, offsetFromCenter: centerOffset, attachedToAnchor: location)
+            attachmentBehavior.frequency = 0
+            
+            animator.addBehavior(attachmentBehavior)
+        } else if sender.state == UIGestureRecognizerState.Changed {
+            attachmentBehavior.anchorPoint = location
+            
+        } else if sender.state == UIGestureRecognizerState.Ended {
+            animator.removeBehavior(attachmentBehavior)
+            
+            snapBehavior = UISnapBehavior(item: myView, snapToPoint: view.center)
+            
+            let translation = sender.translationInView(view)
+            if translation.y > 100 {
+                //when pulled down far enough, the dialogView drops to the ground.
+                animator.removeAllBehaviors()
+                
+                let gravity = UIGravityBehavior(items: [dialogView])
+                gravity.gravityDirection = CGVectorMake(0, 10)
+                
+                animator.addBehavior(gravity)
+            }
+            if translation.y < 0 {
+                //snap back to original position, if the person drags it up.
+                animator.removeAllBehaviors()
+                
+                snapBehavior = UISnapBehavior(item: myView, snapToPoint: view.center)
+                
+                animator.addBehavior(snapBehavior)
+            }
+            if translation.y >= 0 && translation.y < 100 {
+                //snap back to original position, if the person hasn't dragged it far enough down to dismiss it.
+                animator.removeAllBehaviors()
+                
+                snapBehavior = UISnapBehavior(item: myView, snapToPoint: view.center)
+                
+                animator.addBehavior(snapBehavior)
+            }
+        }
+        
+        
+        
+        
     }
     
     
