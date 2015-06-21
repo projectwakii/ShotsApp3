@@ -9,6 +9,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    
+    var data: Array<Dictionary<String,String>>?
+    var number: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()

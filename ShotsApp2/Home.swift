@@ -10,6 +10,8 @@ import UIKit
 
 class Home: UIViewController {
     
+    var number = 1
+    
     @IBOutlet weak var userButton: UIButton!
     @IBAction func userButtonDidPress(sender: AnyObject) {
         print("User button pressed.")
@@ -259,9 +261,11 @@ class Home: UIViewController {
     
     
     
-
+    var data = getData() //from Data.swift
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        /* ~~~~EVERYTHING HAS MOVED TO VIEWDIDAPPEAR ~~~~~
 
         // Do any additional setup after loading the view.
         
@@ -295,6 +299,14 @@ class Home: UIViewController {
         //~~ for UI dynamics ~~
         animator = UIDynamicAnimator(referenceView: view)
         
+        // ~~ for data ~~
+        avatarImageView.image = UIImage(named: data[number]["avatar"]!)
+        imageButton.setImage(UIImage(named: data[number]["image"]!), forState: UIControlState.Normal)
+        backgroundImageView.image = UIImage(named: data[number]["image"]!)
+        authorLabel.text = data[number]["author"]
+        titleLabel.text = data[number]["title"]
+
+        */
         
     }
     
@@ -316,6 +328,25 @@ class Home: UIViewController {
     var attachmentBehavior : UIAttachmentBehavior!
     var gravityBehavior : UIGravityBehavior!
     var snapBehavior : UISnapBehavior!
+    
+    func refreshView() {
+        self.number++
+        //and make sure that we cycle through the data so that the app doesn't crash when we don't have data left
+        if self.number >= 3 {
+            self.number = 0
+        }
+        
+        animator.removeAllBehaviors()
+        
+        snapBehavior = UISnapBehavior(item: dialogView, snapToPoint: view.center)
+        attachmentBehavior.anchorPoint = view.center
+        
+        animator.addBehavior(snapBehavior)
+        dialogView.center = view.center
+        
+        viewDidAppear(true)
+        
+    }
     
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
     @IBAction func handleGesture(sender: AnyObject) {
@@ -340,7 +371,10 @@ class Home: UIViewController {
             attachmentBehavior = UIAttachmentBehavior(item: myView, offsetFromCenter: centerOffset, attachedToAnchor: location)
             attachmentBehavior.frequency = 0
             
+            if attachmentBehavior != nil {
             animator.addBehavior(attachmentBehavior)
+            }
+            
         } else if sender.state == UIGestureRecognizerState.Changed {
             attachmentBehavior.anchorPoint = location
             
@@ -358,7 +392,14 @@ class Home: UIViewController {
                 gravity.gravityDirection = CGVectorMake(0, 10)
                 
                 animator.addBehavior(gravity)
-            }
+                
+                
+                
+                //refresh the dialogView to introduce new data
+                //viewDidLoad runs a little too quickly, so we need a small delay. 
+                delay(2){
+                    self.refreshView()
+                    }
             if translation.y < 0 {
                 //snap back to original position, if the person drags it up.
                 animator.removeAllBehaviors()
@@ -376,12 +417,8 @@ class Home: UIViewController {
                 animator.addBehavior(snapBehavior)
             }
         }
-        
-        
-        
-        
+        }
     }
-    
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         //This changes the UI Status Bar to be white.
@@ -394,14 +431,20 @@ class Home: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
+        if segue.identifier == "homeToDetail" {
+            let controller = segue.destinationViewController as! DetailViewController
+            controller.data = data
+            controller.number = number
+        }
+        
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

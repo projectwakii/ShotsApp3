@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D74EB64C1B35719900A44A38 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EB64B1B35719900A44A38 /* Data.swift */; };
+		D74EB6501B36448900A44A38 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74EB64F1B36448900A44A38 /* Misc.swift */; };
 		D7AFCB4A1B303461006B328B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB491B303461006B328B /* AppDelegate.swift */; };
 		D7AFCB521B303461006B328B /* ShotsApp2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7AFCB501B303461006B328B /* ShotsApp2.xcdatamodeld */; };
 		D7AFCB541B303461006B328B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7AFCB531B303461006B328B /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D74EB64B1B35719900A44A38 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		D74EB64F1B36448900A44A38 /* Misc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 		D7AFCB461B303461006B328B /* ShotsApp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShotsApp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AFCB491B303461006B328B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7AFCB511B303461006B328B /* ShotsApp2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ShotsApp2.xcdatamodel; sourceTree = "<group>"; };
@@ -112,10 +116,12 @@
 			isa = PBXGroup;
 			children = (
 				D7C57AAE1B32AC3200B504C1 /* BlurView.swift */,
+				D74EB64F1B36448900A44A38 /* Misc.swift */,
 				D7C57AB31B33A4CF00B504C1 /* SpringAnimation.swift */,
 				D7E74A451B32AACE006FA3A0 /* Spring */,
 				D7AFCB7D1B30353C006B328B /* TipoType - Libertad.otf */,
 				D7AFCB491B303461006B328B /* AppDelegate.swift */,
+				D74EB64B1B35719900A44A38 /* Data.swift */,
 				D7BFF1CD1B319FEE00C6F3B7 /* Home.swift */,
 				D7AFCB801B304D08006B328B /* DetailViewController.swift */,
 				D7AFCB7E1B30359F006B328B /* Main.storyboard */,
@@ -277,9 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7C57AB01B32AD3800B504C1 /* ShotsApp2.app in Sources */,
+				D74EB64C1B35719900A44A38 /* Data.swift in Sources */,
 				D7C57AB11B32AD3800B504C1 /* ShotsApp2Tests.xctest in Sources */,
 				D7C57AB21B32AD3800B504C1 /* ShotsApp2UITests.xctest in Sources */,
 				D7AFCB521B303461006B328B /* ShotsApp2.xcdatamodeld in Sources */,
+				D74EB6501B36448900A44A38 /* Misc.swift in Sources */,
 				D7BFF1CE1B319FEE00C6F3B7 /* Home.swift in Sources */,
 				D7C57AAF1B32AC3200B504C1 /* BlurView.swift in Sources */,
 				D7C57AB41B33A4CF00B504C1 /* SpringAnimation.swift in Sources */,
